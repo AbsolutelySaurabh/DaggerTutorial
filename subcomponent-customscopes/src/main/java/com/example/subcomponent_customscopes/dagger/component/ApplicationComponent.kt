@@ -1,6 +1,5 @@
 package com.example.subcomponent_customscopes.dagger.component
 
-import com.example.subcomponent_customscopes.LoginActivity
 import com.example.subcomponent_customscopes.dagger.module.NetworkModule
 import com.example.subcomponent_customscopes.dagger.module.SubComponentModule
 import dagger.Component

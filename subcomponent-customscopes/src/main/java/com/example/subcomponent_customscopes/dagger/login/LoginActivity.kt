@@ -1,8 +1,10 @@
-package com.example.subcomponent_customscopes
+package com.example.subcomponent_customscopes.dagger.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.subcomponent_customscopes.R
 import com.example.subcomponent_customscopes.dagger.MyApplication
+import com.example.subcomponent_customscopes.dagger.component.LoginComponent
 import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity() {
@@ -15,6 +17,12 @@ class LoginActivity : AppCompatActivity() {
     They need to have at least package-private visibility.
      */
     @Inject lateinit var mainViewModel: LoginViewModel
+
+    /*
+    Notice that the variable loginComponent is not annotated with @Inject because you're not expecting that variable to
+    be provided by Dagger
+     */
+    lateinit var loginComponent: LoginComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         /*

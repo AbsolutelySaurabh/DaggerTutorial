@@ -1,6 +1,9 @@
 package com.example.subcomponent_customscopes.dagger.component
 
-import com.example.subcomponent_customscopes.LoginActivity
+import com.example.subcomponent_customscopes.dagger.login.LoginActivity
+import com.example.subcomponent_customscopes.dagger.login.LoginPasswordFragment
+import com.example.subcomponent_customscopes.dagger.login.LoginUsernameFragment
+import com.example.subcomponent_customscopes.dagger.scope.ActivityScope
 import dagger.Subcomponent
 
 /*
@@ -29,6 +32,8 @@ To scope LoginViewModel to the lifecycle of LoginActivity you need to create a n
  */
 
 //To tell dagger LoginComponent is subcomponent of ApplicationComponent indicate in @Module
+// Classes annotated with @ActivityScope are scoped to the graph and the same instance of that type is provided every time the type is requested
+@ActivityScope
 @Subcomponent
 interface LoginComponent {
 
@@ -41,5 +46,13 @@ interface LoginComponent {
     //This tells dagger that LoginActivity requests injection from LoginComponent so that this subcomponent graph needs
     //to satisfy all the dependencies of the fields that LoginActivity is injecting
     fun inject(loginActivity: LoginActivity)
+
+    /*
+         All LoginActivity, LoginUsernameFragment and LoginPasswordFragment
+         request injection from LoginComponent. The graph needs to satisfy
+         all the dependencies of the fields those classes are injecting
+     */
+    fun inject(usernameFragment: LoginUsernameFragment)
+    fun inject(passwordFragment: LoginPasswordFragment)
 
 }
