@@ -1,0 +1,4 @@
+include ':subcomponent-customscopes'
+include ':android_dagger'
+include ':app'
+rootProject.name = "UsingDagger"
